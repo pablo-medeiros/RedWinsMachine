@@ -1,0 +1,5 @@
+name: RedWinsMachine
+version: BETA
+main: bd.pablo.redwins.machine.Main
+description: desc
+author: PabloBD

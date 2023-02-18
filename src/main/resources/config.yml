@@ -1,0 +1,118 @@
+debug: true
+storage:
+  type: 'sqlite' # sqlite & mysql
+  mysql:
+    host: 'localhost'
+    port: 3306
+    database: 'test'
+    user: 'root'
+    password: ''
+machines:
+  'machine-1': # Id da maquina, não altere, alterando vai perder as maquinas ja colocadas, e as maquinas givadas (ItemStack)
+    name: 'Maquina de Ouro' # Nome ficticio
+    price: 1000.0 # Preço da maquina para o mercado
+    block: # Bloco colocado no chão
+      id: 41
+      data: 0
+    drop: # Drop da maquina e tempo entre drop
+      segs: 2.5
+      id: 266
+      amount: 1
+      name: '&eDrop de &lOuro'
+    display: # Item que vai ser givado para o jogador e que vai ter no mercado
+      id: 41
+      name: '&eMaquina de &lOuro'
+      lore:
+        - '&7'
+        - '  &7Drop: &eOuro'
+        - '  &7Delay: &f2.5s'
+        - '&7'
+fuels:
+  'fuel-1': # Id do combustivel, não altere, alterando vai perder os combustiveis givados (ItemStack)
+    name: 'Combustivel comum' # Nome ficticio
+    price: 50.0 # Preço do combustivel para o mercado
+    segs: 60.0 # Tempo que vai funcionar a maquina
+    blocked: [] # Maquinas bloqueadas
+    display: # Item que vai ser givado para o jogador e que vai ter no mercado
+      id: 263
+      data: 1
+      name: '&7Combustivel &8Comum'
+      lore:
+        - '&7'
+        - '  &7Raridade: &fComum'
+        - '  &7Duração: &f1 minuto'
+        - '&7'
+market:
+  title: '&7Maquinas &f& &7Combustiveis'
+  height: 3
+  items:
+    'item-1':
+      position:
+        x: 3
+        y: 2
+      id: 138
+      name: '&eMaquinas'
+      lore:
+        - '&7'
+        - '&aCompre maquinas'
+        - '&7'
+      glow: true
+      action: 'OPEN:MACHINE_MARKET'
+    'item-2':
+      position:
+        x: 7
+        y: 2
+      id: 263
+      name: '&eCombustiveis'
+      lore:
+        - '&7'
+        - '&aCompre combustiveis para sua maquina'
+        - '&7'
+      glow: true
+      action: 'OPEN:FUEL_MARKET'
+'machine_market':
+  title: '&7Maquinas'
+  height: 3
+  fill:
+    type: 'BORDER'
+    item:
+      id: 160
+      amount: -1
+      data: 14
+      name: '&c-'
+      action: 'OPEN:MARKET'
+  items:
+    'item-1':
+      position:
+        x: 1
+        y: 3
+      id: 262
+      name: '&cVoltar'
+      action: 'OPEN:MARKET'
+  place_fill: 'HALF'
+  'display-lore':
+    - '&7Direito compra 1'
+    - '&7Esquerdo compra 64'
+'fuel_market':
+  title: '&7Combustiveis'
+  height: 3
+  fill:
+    type: 'BORDER'
+    item:
+      id: 160
+      amount: -1
+      data: 14
+      name: '&c-'
+      action: 'OPEN:MARKET'
+  items:
+    'item-1':
+      position:
+        x: 1
+        y: 3
+      id: 262
+      name: '&cVoltar'
+      action: 'OPEN:MARKET'
+  place_fill: 'HALF'
+  'display-lore':
+    - '&7Esquerdo compra 1'
+    - '&7Direito compra 64'

@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="RedWinsMachine:jar">
+    <output-path>$USER_HOME$/Documents/Minecraft Servers/Development/plugins</output-path>
+    <root id="archive" name="RedWinsMachine.jar">
+      <element id="module-output" name="RedWinsMachine" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/zaxxer/HikariCP/3.0.0/HikariCP-3.0.0.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
