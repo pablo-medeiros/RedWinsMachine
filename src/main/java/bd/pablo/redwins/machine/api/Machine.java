@@ -1,6 +1,7 @@
 package bd.pablo.redwins.machine.api;
 
 import bd.pablo.redwins.machine.Main;
+import bd.pablo.redwins.machine.api.events.MachineOutOfFuelEvent;
 import bd.pablo.redwins.machine.lib.metadata.CraftMetaManager;
 import bd.pablo.redwins.machine.lib.metadata.Meta;
 import bd.pablo.redwins.machine.lib.metadata.MetaManager;
@@ -134,6 +135,11 @@ public class Machine implements MetadataValue {
         }
         fuel--;
         temp = 1;
+        if(fuel <= 0){
+            MachineOutOfFuelEvent machineOutOfFuelEvent = new MachineOutOfFuelEvent(this,type);
+            machineOutOfFuelEvent.call();
+            if(machineOutOfFuelEvent.isCancelled())fuel = 1;
+        }
         if(panel!=null){
             panel.reload(MachinePanel.ReloadType.FUEL);
         }

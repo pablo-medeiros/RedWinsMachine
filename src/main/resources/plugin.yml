@@ -3,3 +3,5 @@ version: BETA
 main: bd.pablo.redwins.machine.Main
 description: desc
 author: PabloBD
+softdepend:
+  - Vault
