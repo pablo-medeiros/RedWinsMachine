@@ -70,6 +70,18 @@ public class MachineType implements IType{
         displayItem = displayItemNBT.build();
     }
 
+    @Override
+    public boolean isSimilar(ItemStack param) {
+        NBTItem item = new NBTItem(param);
+        item.load();
+        return isSimilar(item);
+    }
+
+    @Override
+    public boolean isSimilar(NBTItem param) {
+        return param.getTag().has("machine-type-id")&&param.getTag().string("machine-type-id").equalsIgnoreCase(id);
+    }
+
     public String id() {
         return this.id;
     }

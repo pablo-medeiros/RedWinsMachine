@@ -6,11 +6,13 @@ import bd.pablo.redwins.machine.api.events.MachineWorldUnLoadEvent;
 import bd.pablo.redwins.machine.api.menus.Menu;
 import bd.pablo.redwins.machine.types.FuelType;
 import bd.pablo.redwins.machine.types.MachineType;
+import bd.pablo.redwins.machine.util.NBTItem;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -46,6 +48,15 @@ public class Manager {
         return null;
     }
 
+    public MachineType machineTypeByItem(@Nonnull ItemStack item){
+        NBTItem nbtItem = new NBTItem(item);
+        nbtItem.load();
+        for(MachineType type : machineTypes()){
+            if(type.isSimilar(nbtItem))return type;
+        }
+        return null;
+    }
+
     public FuelType fuelTypeById(@Nonnull String id){
         for(FuelType type : fuelTypes()){
             if(type.id().equalsIgnoreCase(id))return type;
@@ -56,6 +67,15 @@ public class Manager {
     public FuelType fuelTypeByName(@Nonnull String name){
         for(FuelType type : fuelTypes()){
             if(type.name().equalsIgnoreCase(name))return type;
+        }
+        return null;
+    }
+
+    public FuelType fuelTypeByItem(@Nonnull ItemStack item){
+        NBTItem nbtItem = new NBTItem(item);
+        nbtItem.load();
+        for(FuelType type : fuelTypes()){
+            if(type.isSimilar(nbtItem))return type;
         }
         return null;
     }

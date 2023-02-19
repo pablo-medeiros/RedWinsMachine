@@ -62,6 +62,18 @@ public class FuelType implements IType{
     }
 
     @Override
+    public boolean isSimilar(ItemStack param) {
+        NBTItem item = new NBTItem(param);
+        item.load();
+        return isSimilar(item);
+    }
+
+    @Override
+    public boolean isSimilar(NBTItem param) {
+        return param.getTag().has("fuel-type-id")&&param.getTag().string("fuel-type-id").equalsIgnoreCase(id);
+    }
+
+    @Override
     public String typeName() {
         return "fuel";
     }
